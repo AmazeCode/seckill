@@ -51,7 +51,4 @@ public class SeckillDaoTest {
         System.out.println("updateCount="+updateCount);
     }
 
-
-
-
 }

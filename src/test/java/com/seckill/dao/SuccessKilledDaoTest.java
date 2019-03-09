@@ -18,6 +18,8 @@ public class SuccessKilledDaoTest {
 
     @Test
     public void insertSuccessKilled() {
+        //第一次插入返回的是1
+        //第二次插入返回的是0，保证唯一性的前提条件是，使用联合主键，同时插入是使用ignore,防止重复插入报错
         long id = 1000L;
         long phone = 13502181181L;
         int insertCount = successKilledDao.insertSuccessKilled(id,phone);
