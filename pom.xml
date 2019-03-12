@@ -148,6 +148,13 @@
       <version>5.1.2.RELEASE</version>
     </dependency>
 
+    <!-- 其他相关依赖 -->
+    <dependency>
+      <groupId>commons-net</groupId>
+      <artifactId>commons-net</artifactId>
+      <version>3.6</version>
+    </dependency>
+
   </dependencies>
 
   <build>
