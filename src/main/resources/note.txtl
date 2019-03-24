@@ -23,3 +23,59 @@ XML+注解方式
 声明式事务独有的概念
 传播行为(默认)->propagation_required
 什么时候回滚：抛出运行期异常（Runtime Exception），注意小心不当的try{}catch(){}
+
+Restful接口设计
+实列：
+GET: /seckill/list
+POST: /seckill/{seckillId}/execution 要使用名词作为名称
+DELETE：/seckill/{id}/delete 名词
+get主要用于查询操作
+post主要用于添加/修改操作(非密等的操作使用，参数不隐藏)
+put主要用于修改操作(密等操作使用,参数隐藏)
+delete删除操作
+
+URL设计
+/模块/资源/{标示}/集合1/...
+正列子：/user/{uid}/frends ->好友列表
+/user/{uid}/followers ->关注着列表
+
+GET /seckill/list 秒杀列表
+GET /seckill/{id}/{detail} >详情页
+GET /seckill/time/now >系统时间
+POST /seckill/{id}/exposer >暴露秒杀
+POST /seckill/{id}/{md5}/execution >执行秒杀
+
+使用SpringMVC框架理论
+围绕Handler开发
+        数据Model
+Handler
+        页面View
+MVC映射Controller流程：
+用户->DispatcherServlet->DefaultAnnotationHandlerMapping->DefaultAnnotationHandlerAdapter
+->Controller->ModelAndView(/seckill/list)-到(DispatcherServlet)转发器-InternalResourceViewResolver
+->然后(DispatcherServlet)转发器->Model->list.jsp
+
+Http请求地址映射原理
+HTTP->(Tomcat,jetty)SpringMVC Handler Mapping注解，xml编程等
+@RequestMapping注解：
+(1)、支持标准的URL
+(2)、Ant风格的URL(即?和*和**等字符)
+(3)、带{xxx}占位符URL
+例如：
+/user/*/creation
+    匹配/user/aaa/creation、/user/bbb/creation等URL
+/user/**/creation
+    匹配/user/creation、/user/aaa/bbb/creation等URL
+/user/{userId}
+    匹配user/123、user/abc等URL
+/company/{companyId}/user/{userId}/detail
+
+请求方法细节处理
+1、请求参数绑定
+2、请求方式限制
+3、请求转发和重定向
+4、数据模型赋值
+5、返回json数据
+6、cookies访问
+@PathVariable("seckillId") 绑定参数
+@CookieValue 从cookie中获取数据

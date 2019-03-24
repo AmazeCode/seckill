@@ -3,7 +3,7 @@ package com.seckill.service.impl;
 import com.seckill.dao.SeckillDao;
 import com.seckill.dao.SuccessKilledDao;
 import com.seckill.dto.ExposerDto;
-import com.seckill.dto.SeckillExecution;
+import com.seckill.dto.SeckillExecutionDto;
 import com.seckill.enums.SeckillStateEnum;
 import com.seckill.exception.RepeatKillException;
 import com.seckill.exception.SeckillCloseException;
@@ -89,7 +89,7 @@ public class SeckillServiceImpl implements SeckillService {
      */
     @Override
     @Transactional
-    public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5) throws SeckillException, RepeatKillException, SeckillCloseException {
+    public SeckillExecutionDto executeSeckill(long seckillId, long userPhone, String md5) throws SeckillException, RepeatKillException, SeckillCloseException {
         if (md5 == null || !md5.equals(getMD5(seckillId))) {
             throw new SeckillException("seckill data rewrite");
         }
@@ -109,7 +109,7 @@ public class SeckillServiceImpl implements SeckillService {
                 } else {
                     //秒杀成功
                     SuccessKilled successKilled = successKilledDao.queryByIdWithSeckill(seckillId, userPhone);
-                    return new SeckillExecution(seckillId, SeckillStateEnum.SUCCESS, successKilled);
+                    return new SeckillExecutionDto(seckillId, SeckillStateEnum.SUCCESS, successKilled);
                 }
             }
         } catch (SeckillCloseException e1) {

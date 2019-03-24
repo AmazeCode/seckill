@@ -6,7 +6,7 @@ import com.seckill.model.SuccessKilled;
 /**
  * 封装秒杀执行后结果
  */
-public class SeckillExecution {
+public class SeckillExecutionDto {
 
     /**
      * 秒杀id
@@ -34,7 +34,7 @@ public class SeckillExecution {
      * @param seckillStateEnum
      * @param successKilled
      */
-    public SeckillExecution(long seckillId, SeckillStateEnum seckillStateEnum, SuccessKilled successKilled) {
+    public SeckillExecutionDto(long seckillId, SeckillStateEnum seckillStateEnum, SuccessKilled successKilled) {
         this.seckillId = seckillId;
         this.state = seckillStateEnum.getState();
         this.stateInfo = seckillStateEnum.getStateInfo();
@@ -44,10 +44,20 @@ public class SeckillExecution {
     /**
      * 构造方法
      * @param seckillId
+     * @param seckillStateEnum
+     */
+    public SeckillExecutionDto(long seckillId, SeckillStateEnum seckillStateEnum) {
+        this.seckillId = seckillId;
+        this.state = seckillStateEnum.getState();
+    }
+
+    /**
+     * 构造方法
+     * @param seckillId
      * @param state
      * @param stateInfo
      */
-    public SeckillExecution(long seckillId, int state, String stateInfo) {
+    public SeckillExecutionDto(long seckillId, int state, String stateInfo) {
         this.seckillId = seckillId;
         this.state = state;
         this.stateInfo = stateInfo;

@@ -1,10 +1,9 @@
 package com.seckill.service;
 
 import com.seckill.dto.ExposerDto;
-import com.seckill.dto.SeckillExecution;
+import com.seckill.dto.SeckillExecutionDto;
 import com.seckill.exception.RepeatKillException;
 import com.seckill.exception.SeckillCloseException;
-import com.seckill.exception.SeckillException;
 import com.seckill.model.Seckill;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
         {"classpath:spring/spring-dao.xml",
@@ -51,7 +49,7 @@ public class SeckillServiceTest {
             long phone = 12345678913L;
             String md5 = exposerDto.getMd5();
             try{
-                SeckillExecution execution = seckillService.executeSeckill(id,phone,md5);
+                SeckillExecutionDto execution = seckillService.executeSeckill(id,phone,md5);
                 logger.info("result={}",execution);
             }catch (RepeatKillException e){
                 logger.error(e.getMessage());
@@ -72,7 +70,7 @@ public class SeckillServiceTest {
         String md5 = "fdatldag123ajtlr";
         try{
 
-            SeckillExecution execution = seckillService.executeSeckill(id,phone,md5);
+            SeckillExecutionDto execution = seckillService.executeSeckill(id,phone,md5);
             logger.info("result={}",execution);
         }catch (RepeatKillException e){
             logger.error(e.getMessage());
