@@ -4,6 +4,16 @@
                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0"
          metadata-complete="true">
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:mybatis-config.xml</param-value>
+    </context-param>
+    <!-- 配置spirng监听 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
     <!-- 修改servlet版本为3.1 -->
     <!-- 配置DispatcherServlet -->
     <servlet>

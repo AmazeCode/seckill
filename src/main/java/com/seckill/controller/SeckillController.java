@@ -6,7 +6,6 @@ import com.seckill.dto.SeckillResultDto;
 import com.seckill.enums.SeckillStateEnum;
 import com.seckill.exception.RepeatKillException;
 import com.seckill.exception.SeckillCloseException;
-import com.seckill.exception.SeckillException;
 import com.seckill.model.Seckill;
 import com.seckill.service.SeckillService;
 import org.slf4j.Logger;
@@ -31,17 +30,16 @@ public class SeckillController {
     @Autowired
     private SeckillService seckillService;
 
-    @RequestMapping(name = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/list",method = {RequestMethod.GET,RequestMethod.POST})
     public String list(Model model){
-
         //获取列表页
         List<Seckill> list = seckillService.getSeckillList();
         //list.jsp + model = ModelAndView
         model.addAttribute("list",list);
-        return "list";
+        return "/list";
     }
 
-    @RequestMapping(name = "/{seckillId}/detail",method = RequestMethod.GET)
+    @RequestMapping(value = "/{seckillId}/detail",method = RequestMethod.GET)
     public String detail(@PathVariable("seckillId") Long seckillId,Model model){
 
         if(seckillId == null){
@@ -52,11 +50,11 @@ public class SeckillController {
             return "forward:/seckill/list";
         }
         model.addAttribute("seckill",seckill);
-        return "detail";
+        return "/detail";
     }
 
     //ajax json
-    @RequestMapping(name = "/{seckillId}/exposer",
+    @RequestMapping(value = "/{seckillId}/exposer",
             method = RequestMethod.POST,
             produces = {"application/json;charset=UTF-8"}
     )
@@ -75,7 +73,7 @@ public class SeckillController {
         return resultDto;
     }
 
-    @RequestMapping(name = "/{seckillId}/{md5}/execution",
+    @RequestMapping(value = "/{seckillId}/{md5}/execution",
             method = RequestMethod.POST,
             produces = {"application/json;charset=UTF-8"})
     @ResponseBody

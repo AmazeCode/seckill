@@ -16,9 +16,16 @@
     <%@include file="common/header.jsp"%>
 </head>
 <body>
+    <div class="container">
+        <div class="panel panel-default text-center">
+            <div class="pannel-heading">
+                <h1>${seckill.name}</h1>
+            </div>
+        </div>
+        <div class="panel-body">
 
-
-
+        </div>
+    </div>
 </body>
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
