@@ -1,8 +1,8 @@
-<%@page contentType="text/html;charst=UTF-8" language="java"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%-- 引入jstl --%>
 <%@include file="common/tag.jsp"%>
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
     <!-- 屏幕适配 -->
     <meta charset="utf-8">
@@ -29,7 +29,7 @@
                         <th>库存</th>
                         <th>开始时间</th>
                         <th>结束时间</th>
-                        <th>创建时间</th>
+                        <%--<th>创建时间</th>--%>
                         <th>详情页</th>
                     </thead>
                     <tbody>
@@ -43,9 +43,9 @@
                                 <td>
                                     <fmt:formatDate value="${sk.endTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
                                 </td>
-                                <td>
+                                <%--<td>
                                     <fmt:formatDate value="${sk.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
-                                </td>
+                                </td>--%>
                                 <td>
                                     <a class="btn btn-info" href="/seckill/${seckillId}/detail" target="_blank">link</a>
                                 </td>

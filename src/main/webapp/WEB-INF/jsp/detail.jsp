@@ -1,4 +1,4 @@
-<%@page contentType="text/html;charst=UTF-8" language="java"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" contentType="text/html;charset=utf-8"%>
 <%-- 引入jstl --%>
 <%@include file="common/tag.jsp"%>
 <!DOCTYPE html>
@@ -23,9 +23,43 @@
             </div>
         </div>
         <div class="panel-body">
-
+            <h2 class="text-danger">
+                <!--显示time图标-->
+                <span class="glyphicon glyphicon-time"></span>
+                <!--展示倒计时-->
+                <span class="glyphicon" id="seckill-box"></span>
+            </h2>
         </div>
     </div>
+<!-- 登陆弹出层,输入电话 -->
+<div id="killPhoneModel" class="model fade">
+    <div class="modal-dialog">
+        <div class="model-content">
+            <div class="model-header">
+                <h3 class="model-title text-center">
+                    <span class="glyphicon glyphicon-phone"></span>
+                </h3>
+            </div>
+            <div class="model-body">
+                <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <input type="text" name="killPhone" id="killPhoneKey"
+                        placeholder="请填写手机号" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="model-footer">
+                <!-- 验证信息 -->
+                <span id="killPhoneMessage" class="glyphicon"></span>
+                <button type="button" id="killPhoneBtn" class="btn btn-success">
+                    <span class="glyphicon glyphicon-phone"></span>
+                    Submit
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
 </body>
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
