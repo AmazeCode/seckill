@@ -1,4 +1,11 @@
-1、SpringIoc理解
+1、SpringIoc(控制反转)理解
+    1、谁控制谁，控制什么：传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；
+而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对象的创建；谁控制谁？当然是IoC容器控制了对象；
+控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。
+    2、为何是反转，哪些方面反转了：有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；
+而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；
+哪些方面反转了？依赖对象的获取被反转了。
+
 对象工厂、依赖管理-》一致的访问接口
 业务对象依赖图：
 SeckillService{seckillDao、successSeckillDao[sqlSessionFactory->DataSource]}
@@ -37,7 +44,7 @@ delete删除操作
 URL设计
 /模块/资源/{标示}/集合1/...
 正列子：/user/{uid}/frends ->好友列表
-/user/{uid}/followers ->关注着列表
+/user/{uid}/followers ->关注者列表
 
 GET /seckill/list 秒杀列表
 GET /seckill/{id}/{detail} >详情页
@@ -79,3 +86,20 @@ HTTP->(Tomcat,jetty)SpringMVC Handler Mapping注解，xml编程等
 6、cookies访问
 @PathVariable("seckillId") 绑定参数
 @CookieValue 从cookie中获取数据
+
+学习技术回顾：
+前端交互设计过程
+Restful接口设计
+SpringMvc使用过程
+Bootstarp和JS使用
+
+SpringMVC使用技巧
+SpringMvc配置和运行流程
+DTO传递数据
+注解映射驱动
+主要操作DefaultAnnotationHandlerMapping，DefaultAnnotationHandlerAdapter，ModelAndView，InternalResourceViewResolver
+
+Bootstarp和JS使用
+bootstarp
+js模块化
+jQuery和plugin使用

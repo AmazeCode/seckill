@@ -59,7 +59,7 @@ public class SeckillController {
             produces = {"application/json;charset=UTF-8"}
     )
     @ResponseBody
-    public SeckillResultDto<ExposerDto> exposer(Long seckillId){
+    public SeckillResultDto<ExposerDto> exposer(@PathVariable Long seckillId){
 
         SeckillResultDto<ExposerDto> resultDto;
         try{
